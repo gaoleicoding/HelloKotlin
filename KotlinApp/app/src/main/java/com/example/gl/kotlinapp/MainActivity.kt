@@ -3,6 +3,7 @@ package com.example.gl.kotlinapp
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -11,8 +12,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.example.gl.kotlinapp.R.id.async
 import com.example.gl.kotlinapp.Utils.toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.launch
+import java.net.URL
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -166,8 +171,8 @@ class MainActivity : AppCompatActivity() {
         println(s)//如果s为null则会抛出空指针异常
 
         val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-        list.filter { it%2==0 }             // 取偶数
-                .map{ it*it }               // 平方
+        list.filter { it % 2 == 0 }             // 取偶数
+                .map { it * it }               // 平方
                 .sortedDescending()         // 降序排序
                 .take(3)                    // 取前 3 个
                 .forEach { println(it) }    // 遍历, 打印
@@ -236,4 +241,36 @@ class MainActivity : AppCompatActivity() {
         })
 
     }
+
+    fun functionalCode() {
+        /*1、高阶函数*/
+        val numbers = listOf(1, 2, 3, 4, 5, 6, 7, 8)
+        println(numbers.filter(
+                fun(x: Int): Boolean {
+                    return x > 5
+                }
+        ))
+        /*2、匿名函数*/
+        val numbers2 = listOf(1, 2, 3, 4, 5, 6, 7, 8)
+        println(numbers2.filter(
+                fun(x: Int): Boolean {
+                    return x > 5
+                }
+        ))
+        /* 3、Lambda表达式*/
+
+        val numbers3 = listOf(1, 2, 3, 4, 5, 6, 7, 8)
+        println(numbers3.filter({ it > 5 }))
+
+    }
+    fun streamCollection(){
+        val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+        list.filter { it%2==0 }             // 取偶数
+                .map{ it*it }               // 平方
+                .sortedDescending()         // 降序排序
+                .take(3)                    // 取前 3 个
+                .forEach { println(it) }    // 遍历, 打印
+
+    }
+
 }
