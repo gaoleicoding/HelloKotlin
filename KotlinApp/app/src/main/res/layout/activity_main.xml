@@ -18,7 +18,13 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/city_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"/>
 
-    </android.support.v7.widget.RecyclerView>
+    <FrameLayout
+        android:id="@+id/layout_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
 </LinearLayout>

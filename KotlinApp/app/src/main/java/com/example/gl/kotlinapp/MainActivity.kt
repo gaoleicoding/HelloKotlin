@@ -1,18 +1,23 @@
 package com.example.gl.kotlinapp
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.example.gl.kotlinapp.Utils.toast
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var textView: TextView;
+    //    lateinit var textView: TextView;
     lateinit var student: Student
     lateinit var city_recyclerview: RecyclerView
     lateinit var hotCityAdapter: HotCityAdapter
@@ -30,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textView = findViewById(R.id.textView)
+//        textView = findViewById(R.id.textView)
         city_recyclerview = findViewById(R.id.city_recyclerview)
 
         textView.setText("Hello Kotlin")
@@ -145,6 +150,9 @@ class MainActivity : AppCompatActivity() {
 
         //扩展函数调用
         textView.isBold()
+        val v = layout_frame.inflate(R.layout.activity_main)
+        textView.leftMargin = 30
+
         /*在Kotlin中，=== 表示比较对象地址，== 表示比较两个值大小*/
         val a1: Int? = a
         val a2: Int? = a
@@ -156,6 +164,13 @@ class MainActivity : AppCompatActivity() {
         str as? String ?: "not String"
         var s: String = str!!  //如果s为null则会抛出空指针异常，并且异常会指向使用!!的这一行
         println(s)//如果s为null则会抛出空指针异常
+
+        val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+        list.filter { it%2==0 }             // 取偶数
+                .map{ it*it }               // 平方
+                .sortedDescending()         // 降序排序
+                .take(3)                    // 取前 3 个
+                .forEach { println(it) }    // 遍历, 打印
     }
 
     /*
@@ -175,12 +190,29 @@ class MainActivity : AppCompatActivity() {
     fun TextView.isBold() = this.apply {
         paint.isFakeBoldText = true
     }
+
+    fun ViewGroup.inflate(layoutRes: Int): View {
+        return LayoutInflater.from(context).inflate(layoutRes, this, false)
+    }
+
+    //扩展属性
+    var TextView.leftMargin: Int
+        get():Int {
+            return (layoutParams as ViewGroup.MarginLayoutParams).leftMargin
+        }
+        set(value) {
+            (layoutParams as ViewGroup.MarginLayoutParams).leftMargin = value
+        }
+
+
     /*方法不用中括号直接返回结果*/
     fun sum(arg1: Int, arg2: Int) = arg1 + arg2
+
     /* vararg 关键字，参数长度可变化*/
     fun hello(vararg ints: Int) {
         ints.forEach(::println)
     }
+
     fun main(args: Array<String>) {
         val result = "testLet".also {
             println(it.length)
@@ -199,6 +231,7 @@ class MainActivity : AppCompatActivity() {
             override fun onItemClick(view: View, postion: Int) {
                 val bean = hotCityList[postion]
                 Utils.showToast(bean.location, false)
+                toast(bean.location)
             }
         })
 

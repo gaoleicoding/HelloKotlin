@@ -1,5 +1,6 @@
 package com.example.gl.kotlinapp
 
+import android.content.Context
 import android.os.Looper
 import android.widget.Toast
 
@@ -26,4 +27,6 @@ object Utils {
         }
 
     }
+    //扩展函数
+    fun Context.toast(message:CharSequence)= Toast.makeText(this,message, Toast.LENGTH_LONG).show()
 }
