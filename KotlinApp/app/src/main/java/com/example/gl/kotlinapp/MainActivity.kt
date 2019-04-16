@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var city_recyclerview: RecyclerView
     lateinit var hotCityAdapter: HotCityAdapter
     lateinit var hotCityList: List<CityAddBean>
-    val cities: Array<CityAddBean> = arrayOf(CityAddBean("北京", "10", "20"), CityAddBean("上海", "10", "20"), CityAddBean("广州", "10", "20"), CityAddBean("深圳", "10", "20"), CityAddBean("杭州", "10", "20"), CityAddBean("郑州哦", "10", "20"))
+    val cities: Array<CityAddBean> = arrayOf(CityAddBean("北京", "10", "20"), CityAddBean("上海", "10", "20"), CityAddBean("广州", "10", "20"), CityAddBean("深圳", "10", "20"), CityAddBean("杭州", "10", "20"), CityAddBean("郑州", "10", "20"))
 
     val TAG: String = "TAG_MainActivity"
 
@@ -94,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         // 这里能够看到, switch中是不支持a > b这种写法的, 而when中可以
         val a = 3
         val b = 4
-        val max = when(a > b) {
+        val max = when (a > b) {
             true -> a
             false -> b
         }
@@ -127,15 +128,9 @@ class MainActivity : AppCompatActivity() {
         //等同于0..4，不包括最后的
         val range2: IntRange = 1 until 5
 
-        fun sum(arg1: Int, arg2: Int) = arg1 + arg2
-       /* vararg 关键字，参数长度可变化*/
         sum(arg1 = 1, arg2 = 2)
 
-        fun hello(vararg ints: Int) {
-            ints.forEach(::println)
-        }
-
-        hello(1,2,3,4,5)
+        hello(1, 2, 3, 4, 5)
 
         //内联扩展函数之also
         //also函数的结构实际上和let很像唯一的区别就是返回值的不一样，let是以闭包的形式返回，返回函数体内最后一行的值，
@@ -147,38 +142,45 @@ class MainActivity : AppCompatActivity() {
         println(result)
 
         initHotCityRecyclerView()
-        /*
-        methodB定义在methodA的方法体中，即methodB被称为局部方法或局部函数
-        methodB只能在methodA中方法调用
-        methodB在methodA方法外调用，会引起编译错误
-        */
-        fun methodA() {
-            fun methodB() {
 
-            }
-            methodB() //valid
-        }
-
-        //methodB() invalid
-        //扩展函数定义
-        fun TextView.isBold() = this.apply {
-            paint.isFakeBoldText = true
-        }
-       //扩展函数调用
+        //扩展函数调用
         textView.isBold()
         /*在Kotlin中，=== 表示比较对象地址，== 表示比较两个值大小*/
-        val a1 : Int? = a
-        val a2 : Int? = a
+        val a1: Int? = a
+        val a2: Int? = a
         println(a1 == a2)   //true
         println(a1 === a2)  //false
 
-       var str:String="123"
-        val t:String  =  str ?:  "" //如果?:左边的值不为空返回左边的值，如果为空返回""
+        var str: String = "123"
+        val t: String = str ?: "" //如果?:左边的值不为空返回左边的值，如果为空返回""
         str as? String ?: "not String"
-        var s:String = str!!  //如果s为null则会抛出空指针异常，并且异常会指向使用!!的这一行
+        var s: String = str!!  //如果s为null则会抛出空指针异常，并且异常会指向使用!!的这一行
         println(s)//如果s为null则会抛出空指针异常
     }
 
+    /*
+  methodB定义在methodA的方法体中，即methodB被称为局部方法或局部函数
+  methodB只能在methodA中方法调用
+  methodB在methodA方法外调用，会引起编译错误
+  */
+    fun methodA() {
+        fun methodB() {
+
+        }
+        methodB() //valid
+    }
+
+    //methodB() invalid
+    //扩展函数定义
+    fun TextView.isBold() = this.apply {
+        paint.isFakeBoldText = true
+    }
+    /*方法不用中括号直接返回结果*/
+    fun sum(arg1: Int, arg2: Int) = arg1 + arg2
+    /* vararg 关键字，参数长度可变化*/
+    fun hello(vararg ints: Int) {
+        ints.forEach(::println)
+    }
     fun main(args: Array<String>) {
         val result = "testLet".also {
             println(it.length)
@@ -199,5 +201,6 @@ class MainActivity : AppCompatActivity() {
                 Utils.showToast(bean.location, false)
             }
         })
+
     }
 }
