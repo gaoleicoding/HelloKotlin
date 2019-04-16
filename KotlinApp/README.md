@@ -1,2 +1,0 @@
-# KotlinApp
-KotlinApp
