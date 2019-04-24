@@ -22,30 +22,30 @@ class Student(name: String, age: Int) {
         println("init person")
     }
 
-    override fun hashCode(): Int {
-        val sb = StringBuilder()
-        sb.append(age)
-        sb.append(name)
-        val charArr = sb.toString().toCharArray()
-        var hash = 0
-
-        for (c in charArr) {
-            hash = hash * 131 + c.toInt()
-        }
-        return hash
-    }
-
-    override fun equals(obj: Any?): Boolean {
-        if (this === obj) {
-            return true
-        }
-
-        if (obj is Student) {
-            if (obj.age.equals(this.age) && obj.name.equals(this.name)) {
-                return true
-            }
-        }
-
-        return false
-    }
+//    override fun hashCode(): Int {
+//        val sb = StringBuilder()
+//        sb.append(age)
+//        sb.append(name)
+//        val charArr = sb.toString().toCharArray()
+//        var hash = 0
+//
+//        for (c in charArr) {
+//            hash = hash * 131 + c.toInt()
+//        }
+//        return hash
+//    }
+//
+//    override fun equals(obj: Any?): Boolean {
+//        if (this === obj) {
+//            return true
+//        }
+//
+//        if (obj is Student) {
+//            if (obj.age.equals(this.age) && obj.name.equals(this.name)) {
+//                return true
+//            }
+//        }
+//
+//        return false
+//    }
 }

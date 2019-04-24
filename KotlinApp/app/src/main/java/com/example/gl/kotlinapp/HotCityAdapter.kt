@@ -70,8 +70,9 @@ class HotCityAdapter(var context: Context, var list: List<CityAddBean>) : Recycl
             tv_max = view.findViewById(R.id.tv_max)
             tv_min = view.findViewById(R.id.tv_min)
             root_view = view.findViewById(R.id.root_view)
-
+            tv_city.isBold()
         }
+
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {

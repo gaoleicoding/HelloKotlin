@@ -1,9 +1,7 @@
 package com.example.gl.kotlinapp
 
-import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -11,19 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import com.example.gl.kotlinapp.R.id.async
 import com.example.gl.kotlinapp.Utils.toast
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.launch
-import java.net.URL
-import java.util.ArrayList
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     //    lateinit var textView: TextView;
-    lateinit var student: Student
+     var student: Student?=null
     lateinit var city_recyclerview: RecyclerView
     lateinit var hotCityAdapter: HotCityAdapter
     lateinit var hotCityList: List<CityAddBean>
@@ -76,10 +69,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun test() {
+        student.toString()
         student = Student("xiaoming", 12)
-        student.name
-        student.age
-
+        student?.name
+        student?.age
 
         // 对象表达式（Object Expression）,实现匿名内部类
         val callBack = object : CallBack {
@@ -109,6 +102,7 @@ class MainActivity : AppCompatActivity() {
             true -> a
             false -> b
         }
+     var abac =12 as Student
         print(max)
         //想遍历1-100的数值可以这样写
         for (index in 1..100) {
@@ -167,7 +161,7 @@ class MainActivity : AppCompatActivity() {
         var str: String = "123"
         val t: String = str ?: "" //如果?:左边的值不为空返回左边的值，如果为空返回""
         str as? String ?: "not String"
-        var s: String = str!!  //如果s为null则会抛出空指针异常，并且异常会指向使用!!的这一行
+        var s: String = student!! .toString() //如果s为null则会抛出空指针异常，并且异常会指向使用!!的这一行
         println(s)//如果s为null则会抛出空指针异常
 
         val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -192,9 +186,6 @@ class MainActivity : AppCompatActivity() {
 
     //methodB() invalid
     //扩展函数定义
-    fun TextView.isBold() = this.apply {
-        paint.isFakeBoldText = true
-    }
 
     fun ViewGroup.inflate(layoutRes: Int): View {
         return LayoutInflater.from(context).inflate(layoutRes, this, false)
@@ -216,6 +207,7 @@ class MainActivity : AppCompatActivity() {
     /* vararg 关键字，参数长度可变化*/
     fun hello(vararg ints: Int) {
         ints.forEach(::println)
+
     }
 
     fun main(args: Array<String>) {
@@ -260,7 +252,10 @@ class MainActivity : AppCompatActivity() {
         /* 3、Lambda表达式*/
 
         val numbers3 = listOf(1, 2, 3, 4, 5, 6, 7, 8)
-        println(numbers3.filter({ it > 5 }))
+        println(numbers3.filter{ it > 5 })
+        for (a in numbers3){
+            println(numbers3.filter{ it > a })
+        }
 
     }
 

@@ -2,17 +2,21 @@ package com.example.gl.kotlinapp
 
 import android.content.Context
 import android.os.Looper
+import android.widget.TextView
 import android.widget.Toast
 
 //该方法是于静态公共的
 fun getResult(): String {
     return "test"
 }
-
+fun TextView.isBold() = this.apply {
+    paint.isFakeBoldText = true
+}
 /**
  * 对象声明（Object Declaration），将类的声明和定义该类的单例对象结合在一起（即通过object就实现了单例模式）
  */
 object Utils {
+
 
 
     fun showToast(content: String, isShort: Boolean) {
