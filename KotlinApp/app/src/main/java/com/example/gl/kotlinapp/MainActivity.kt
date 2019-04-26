@@ -11,12 +11,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.gl.kotlinapp.Utils.toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.delay
+import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.experimental.runBlocking
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     //    lateinit var textView: TextView;
-     var student: Student?=null
+    var student: Student? = null
     lateinit var city_recyclerview: RecyclerView
     lateinit var hotCityAdapter: HotCityAdapter
     lateinit var hotCityList: List<CityAddBean>
@@ -102,7 +106,7 @@ class MainActivity : AppCompatActivity() {
             true -> a
             false -> b
         }
-     var abac =12 as Student
+        var abac = 12 as Student
         print(max)
         //想遍历1-100的数值可以这样写
         for (index in 1..100) {
@@ -161,7 +165,7 @@ class MainActivity : AppCompatActivity() {
         var str: String = "123"
         val t: String = str ?: "" //如果?:左边的值不为空返回左边的值，如果为空返回""
         str as? String ?: "not String"
-        var s: String = student!! .toString() //如果s为null则会抛出空指针异常，并且异常会指向使用!!的这一行
+        var s: String = student!!.toString() //如果s为null则会抛出空指针异常，并且异常会指向使用!!的这一行
         println(s)//如果s为null则会抛出空指针异常
 
         val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -252,9 +256,9 @@ class MainActivity : AppCompatActivity() {
         /* 3、Lambda表达式*/
 
         val numbers3 = listOf(1, 2, 3, 4, 5, 6, 7, 8)
-        println(numbers3.filter{ it > 5 })
-        for (a in numbers3){
-            println(numbers3.filter{ it > a })
+        println(numbers3.filter { it > 5 })
+        for (a in numbers3) {
+            println(numbers3.filter { it > a })
         }
 
     }
@@ -268,5 +272,6 @@ class MainActivity : AppCompatActivity() {
                 .forEach { println(it) }    // 遍历, 打印
 
     }
+
 
 }
