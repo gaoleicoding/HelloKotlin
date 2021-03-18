@@ -11,10 +11,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.gl.kotlinapp.Utils.toast
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.delay
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.runBlocking
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -106,7 +102,7 @@ class MainActivity : AppCompatActivity() {
             true -> a
             false -> b
         }
-        var abac = 12 as Student
+        var abac = 12
         print(max)
         //想遍历1-100的数值可以这样写
         for (index in 1..100) {
