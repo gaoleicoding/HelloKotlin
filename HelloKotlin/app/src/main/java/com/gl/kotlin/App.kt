@@ -1,11 +1,11 @@
-package com.example.gl.kotlinapp
+package com.gl.kotlin
 
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 
 
-class CustomApplication : Application() {
+class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -25,7 +25,7 @@ class CustomApplication : Application() {
     companion object {
         lateinit var connectivityManager: ConnectivityManager
         lateinit var context: Context
-        lateinit var instance: CustomApplication
+        lateinit var instance: App
 
 
     }

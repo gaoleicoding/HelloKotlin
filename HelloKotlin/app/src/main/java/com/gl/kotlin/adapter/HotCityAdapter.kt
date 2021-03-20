@@ -1,4 +1,4 @@
-package com.example.gl.kotlinapp
+package com.gl.kotlin.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -7,12 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.gl.kotlin.entity.CityEntity
+import com.gl.kotlin.R
+import com.gl.kotlin.util.KotlinUtil.isBold
 
 
-class HotCityAdapter(var context: Context, var list: List<CityAddBean>) : RecyclerView.Adapter<HotCityAdapter.MyViewHolder>() {
+class HotCityAdapter(var context: Context, var list: List<CityEntity>) : RecyclerView.Adapter<HotCityAdapter.MyViewHolder>() {
     internal var listener: OnItemClickListener? = null
 
-    fun changeList(list: List<CityAddBean>) {
+    fun changeList(list: List<CityEntity>) {
         this.list = list
         notifyDataSetChanged()
     }

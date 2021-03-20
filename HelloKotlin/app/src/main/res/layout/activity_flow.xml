@@ -22,11 +22,5 @@
             android:layout_margin="20dp"
             android:text="Hello World!" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
     </LinearLayout>
 </layout>

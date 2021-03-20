@@ -1,4 +1,4 @@
-package com.example.gl.kotlinapp;
+package com.gl.kotlin;
 
 import org.junit.Test;
 

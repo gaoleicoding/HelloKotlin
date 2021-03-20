@@ -1,13 +1,16 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
 // 使用Kotlin插件
-apply plugin: 'kotlin-android'
-// 使用Kotlin Android扩展插件
-apply plugin: 'kotlin-android-extensions'
-
+    id 'kotlin-android'
+// 使用Kotlin注解插件
+    id 'kotlin-kapt'
+// 使用@Parcelize注释
+    id 'kotlin-parcelize'
+}
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.gl.kotlinapp"
+        applicationId "com.gl.kotlin"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
@@ -20,6 +23,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -29,12 +42,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:recyclerview-v7:28+'
-    implementation 'org.jetbrains.anko:anko-sdk15:0.8.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0'
 
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 }
 repositories {
     mavenCentral()
