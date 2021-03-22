@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.knowledge.adapter.ItemAdapter
 import com.gl.kotlin.R
 import com.gl.kotlin.databinding.ActivityMainBinding
-import com.gl.kotlin.entity.DataUser
-import com.gl.kotlin.entity.User
+import com.gl.kotlin.retrofit.RetrofitUtil
 import com.gl.kotlin.util.KotlinUtil
 
 
@@ -65,11 +64,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        var user: User = User("gao", 1, "123");
-        var dataUser: DataUser = DataUser("gao", 1, "123");
-        Log.i(TAG, "user: " + user.toString())
-        Log.i(TAG, "dataUser: " + dataUser.toString())
-
+        RetrofitUtil.startCoroutineWithRetrofit()
+        RetrofitUtil.startAsyncCoroutine()
     }
 
     override fun onStart() {

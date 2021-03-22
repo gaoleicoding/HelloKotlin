@@ -26,7 +26,6 @@ class App : Application() {
         lateinit var connectivityManager: ConnectivityManager
         lateinit var context: Context
 
-
     }
 
 

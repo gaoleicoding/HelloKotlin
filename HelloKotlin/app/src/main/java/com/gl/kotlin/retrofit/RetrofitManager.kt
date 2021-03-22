@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * author: yidong
  * 2021/1/2
  */
-object Retrofitance {
+object RetrofitManager {
     private val client: OkHttpClient by lazy {
         OkHttpClient.Builder()
             .build()

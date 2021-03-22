@@ -265,22 +265,11 @@ object KotlinUtil {
                 }
         ))
         /* 3、Lambda表达式*/
-
         val numbers3 = listOf(1, 2, 3, 4, 5, 6, 7, 8)
         println(numbers3.filter { it > 5 })
         for (a in numbers3) {
             println(numbers3.filter { it > a })
         }
-
-    }
-
-    fun streamCollection() {
-        val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-        list.filter { it % 2 == 0 }             // 取偶数
-                .map { it * it }               // 平方
-                .sortedDescending()         // 降序排序
-                .take(3)                    // 取前 3 个
-                .forEach { println(it) }    // 遍历, 打印
 
     }
 

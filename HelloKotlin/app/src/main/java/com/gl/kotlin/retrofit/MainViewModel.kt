@@ -9,7 +9,7 @@ import com.gl.kotlin.entity.HotKey
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import tech.kicky.common.Retrofitance
+import tech.kicky.common.RetrofitManager
 
 /**
  * main view model
@@ -25,7 +25,7 @@ class MainViewModel : ViewModel() {
 
     fun viewModelCoroutine() {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = Retrofitance.wanAndroidApi.banners()
+            val result = RetrofitManager.wanAndroidApi.banners()
             banners.postValue(result.data)
         }
     }
@@ -34,10 +34,10 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             val start = System.currentTimeMillis()
             // 先请求Banners
-            val result = Retrofitance.wanAndroidApi.banners()
+            val result = RetrofitManager.wanAndroidApi.banners()
             banners.postValue(result.data)
             // 再请求热键，只要是顺序执行即可且上一次的请求结果已拿到即可满足我们的使用场景。
-            val keys = Retrofitance.wanAndroidApi.hotKeys()
+            val keys = RetrofitManager.wanAndroidApi.hotKeys()
             hotKeys.postValue(keys.data)
             Log.d("Coroutine Sample", (System.currentTimeMillis() - start).toString())
         }
@@ -46,8 +46,8 @@ class MainViewModel : ViewModel() {
     fun viewModelAsync() {
         viewModelScope.launch(Dispatchers.IO) {
             val start = System.currentTimeMillis()
-            val result = async { Retrofitance.wanAndroidApi.banners() }
-            val keys = async { Retrofitance.wanAndroidApi.hotKeys() }
+            val result = async { RetrofitManager.wanAndroidApi.banners() }
+            val keys = async { RetrofitManager.wanAndroidApi.hotKeys() }
             Log.d(
                 "Coroutine Sample",
                 (result.await().data.size + keys.await().data.size).toString()
