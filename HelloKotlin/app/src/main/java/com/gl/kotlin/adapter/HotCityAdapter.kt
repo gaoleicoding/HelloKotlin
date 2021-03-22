@@ -1,18 +1,17 @@
 package com.gl.kotlin.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.gl.kotlin.entity.CityEntity
 import com.gl.kotlin.R
+import com.gl.kotlin.entity.CityEntity
 import com.gl.kotlin.util.KotlinUtil.isBold
 
 
-class HotCityAdapter(var context: Context, var list: List<CityEntity>) : RecyclerView.Adapter<HotCityAdapter.MyViewHolder>() {
+class HotCityAdapter(var context: Context, var list: List<CityEntity>) : androidx.recyclerview.widget.RecyclerView.Adapter<HotCityAdapter.MyViewHolder>() {
     internal var listener: OnItemClickListener? = null
 
     fun changeList(list: List<CityEntity>) {
@@ -61,7 +60,7 @@ class HotCityAdapter(var context: Context, var list: List<CityEntity>) : Recycle
     }
 
 
-    inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class MyViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         var tv_city: TextView
         var tv_max: TextView
         var tv_min: TextView

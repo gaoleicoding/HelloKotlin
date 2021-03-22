@@ -1,7 +1,6 @@
 package com.example.knowledge.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import com.gl.kotlin.R
 
 
 class ItemAdapter(private val ctx: Context, private val items: Array<String>) :
-        RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
+        androidx.recyclerview.widget.RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
 
     fun setOnItemClickLitener(mOnItemClickLitener: OnItemClickLitener) {
         this.mOnItemClickLitener = mOnItemClickLitener
@@ -33,7 +32,7 @@ class ItemAdapter(private val ctx: Context, private val items: Array<String>) :
         return items.size
     }
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         val tvContent: TextView
         var rootView: LinearLayout

@@ -1,8 +1,7 @@
 package com.gl.kotlin.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import com.gl.kotlin.entity.CityEntity
 import com.gl.kotlin.adapter.HotCityAdapter
@@ -34,7 +33,7 @@ class HotCityActivity : AppCompatActivity() {
     private fun initHotCityRecyclerView() {
         hotCityList = cities.toList() as ArrayList<CityEntity>
         hotCityAdapter = HotCityAdapter(this, hotCityList)
-        val gridLayoutManager = GridLayoutManager(this, 3)
+        val gridLayoutManager = androidx.recyclerview.widget.GridLayoutManager(this, 3)
         mBinding.cityRecyclerview.layoutManager = gridLayoutManager
         mBinding.cityRecyclerview.adapter = hotCityAdapter
         hotCityAdapter.setOnItemClickListener(object : HotCityAdapter.OnItemClickListener {

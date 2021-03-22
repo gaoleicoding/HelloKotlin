@@ -2,11 +2,11 @@ package com.gl.kotlin.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.knowledge.adapter.ItemAdapter
 import com.gl.kotlin.R
 import com.gl.kotlin.databinding.ActivityMainBinding
@@ -69,8 +69,8 @@ class MainActivity : AppCompatActivity() {
         var dataUser: DataUser = DataUser("gao", 1, "123");
         Log.i(TAG, "user: " + user.toString())
         Log.i(TAG, "dataUser: " + dataUser.toString())
-    }
 
+    }
 
     override fun onStart() {
         super.onStart()

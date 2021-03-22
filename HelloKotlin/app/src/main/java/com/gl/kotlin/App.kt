@@ -25,7 +25,6 @@ class App : Application() {
     companion object {
         lateinit var connectivityManager: ConnectivityManager
         lateinit var context: Context
-        lateinit var instance: App
 
 
     }
