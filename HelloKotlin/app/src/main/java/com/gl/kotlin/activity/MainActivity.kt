@@ -11,6 +11,7 @@ import com.example.knowledge.adapter.ItemAdapter
 import com.gl.kotlin.R
 import com.gl.kotlin.databinding.ActivityMainBinding
 import com.gl.kotlin.retrofit.RetrofitUtil
+import com.gl.kotlin.util.HigherFunctionUtil
 import com.gl.kotlin.util.KotlinUtil
 
 
@@ -64,8 +65,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        RetrofitUtil.startCoroutineWithRetrofit()
-        RetrofitUtil.startAsyncCoroutine()
+
+        HigherFunctionUtil.invoke()
     }
 
     override fun onStart() {

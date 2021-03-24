@@ -23,71 +23,6 @@ object KotlinUtil {
         return "test"
     }
 
-    fun lambdaCode() {
-
-        // 一、回调函数的Kotin的lambda的简化
-        // new 一个线程 匿名类写法
-        val runnable1 = object : Runnable {
-            override fun run() {
-                println("I'm an anonymous class")
-            }
-        }
-        // 函数写法, 略像js
-        val runnable2 = fun() {
-            println("I'm a function")
-        }
-        // lambda写法1
-        val runnable3 = Runnable { ->
-            println("I'm a Lambda")
-        }
-        // lambda写法2
-        val runnable4 = { println("I'm a Lambda") }
-        Thread(runnable4).start()
-    }
-
-    fun inlineFunctionCode() {
-
-        // 二、内联扩展函数之let
-        // let扩展函数的实际上是一个作用域函数，当你需要去定义一个变量在一个特定的作用域范围内，let函数的是一个不错的选择；
-        // let函数另一个作用就是可以避免写一些判断null的操作。
-        val result1 = "testLet".let {
-            println(it.length)
-            1000
-        }
-        println(result1)
-
-        // 三、内联函数之with
-        // with函数和前面的几个函数使用方式略有不同，因为它不是以扩展的形式存在的。它是将某对象作为函数的参数，
-        // 在函数块内可以通过 this 指代该对象。返回值为函数块的最后一行或指定return表达式。
-
-        val user2 = User("Kotlin", 1, "123")
-        val result2 = with(user2) {
-            println("my name is $name, I am $age years old, my phone number is $id")
-            1000
-        }
-        println("result: $result2")
-
-        // 四、内联扩展函数之run
-        // run函数实际上可以说是let和with两个函数的结合体，run函数只接收一个lambda函数为参数，
-        // 以闭包形式返回，返回值为最后一行的值或者指定的return的表达式。
-
-        val user3 = User("Kotlin", 1, "789")
-
-        val result3 = user3.run {
-            println("my name is $name, I am $age years old")
-            1000
-        }
-        println("result: $result3")
-
-        // 五、内联扩展函数之apply
-        // also函数的结构实际上和let很像唯一的区别就是返回值的不一样，let是以闭包的形式返回，返回函数体内最后一行的值，
-        // 而also函数返回的则是传入对象的本身
-        val result = "testLet".also {
-            println(it.length)
-            1000
-        }
-        println(result)
-    }
 
     fun testRange() {
         //想遍历1-100的数值可以这样写
@@ -114,6 +49,7 @@ object KotlinUtil {
         for (i in 10 downTo 0) {
             Log.d(TAG, "i---------" + i)
         }
+
         val range: IntRange = 1..5
         //等同于0..4，不包括最后的
         val range2: IntRange = 1 until 5
@@ -122,12 +58,7 @@ object KotlinUtil {
 
         hello(1, 2, 3, 4, 5)
 
-        val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-        list.filter { it % 2 == 0 }             // 取偶数
-                .map { it * it }               // 平方
-                .sortedDescending()         // 降序排序
-                .take(3)                    // 取前 3 个
-                .forEach { println(it) }    // 遍历, 打印
+
     }
 
     fun judgeIfNull(str1: String, str2: String?, str3: String?, user: User?) {
@@ -177,6 +108,7 @@ object KotlinUtil {
         val max = when (a > b) {
             true -> a
             false -> b
+
         }
         print(max)
     }
@@ -248,30 +180,6 @@ object KotlinUtil {
         println(result)
     }
 
-
-    fun higherFunctioCode() {
-        /*1、高阶函数*/
-        val numbers = listOf(1, 2, 3, 4, 5, 6, 7, 8)
-        println(numbers.filter(
-                fun(x: Int): Boolean {
-                    return x > 5
-                }
-        ))
-        /*2、匿名函数*/
-        val numbers2 = listOf(1, 2, 3, 4, 5, 6, 7, 8)
-        println(numbers2.filter(
-                fun(x: Int): Boolean {
-                    return x > 5
-                }
-        ))
-        /* 3、Lambda表达式*/
-        val numbers3 = listOf(1, 2, 3, 4, 5, 6, 7, 8)
-        println(numbers3.filter { it > 5 })
-        for (a in numbers3) {
-            println(numbers3.filter { it > a })
-        }
-
-    }
 
     interface CallBack {
 
