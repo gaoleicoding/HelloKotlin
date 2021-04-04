@@ -113,6 +113,31 @@ object KotlinUtil {
         print(max)
     }
 
+    fun testReified() {
+        // 没用reified
+        1.toCase(String::class.java)?.substring(0)
+        // 使用reified
+        1.toCase<String>()?.substring(0)
+    }
+
+    // 没用reified
+    fun <T> Int.toCase(clz: Class<T>): T? {
+        return if (clz.isInstance(this)) {
+            this as? T
+        } else {
+            null
+        }
+    }
+
+    // 使用reified
+    inline fun <reified T> Int.toCase(): T? {
+        return if (this is T) {
+            this
+        } else {
+            null
+        }
+    }
+
     fun testCallback() {
         // 对象表达式（Object Expression）,实现匿名内部类
         val callBack = object : CallBack {
