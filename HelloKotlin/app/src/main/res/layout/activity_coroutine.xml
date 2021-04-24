@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity2">
+
+        <Button
+            android:id="@+id/btn_startCoroutine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="startCoroutine"
+            android:onClick="startCoroutine"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_lifecycleCoroutine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="lifecycleCoroutine"
+            android:onClick="lifecycleCoroutine"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_startBlockingCoroutine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="startBlockingCoroutine"
+            android:onClick="startBlockingCoroutine"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_switchCoroutineThread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="switchCoroutineThread"
+            android:onClick="switchCoroutineThread"
+            android:textAllCaps="false" />
+
+
+    </LinearLayout>
+</layout>

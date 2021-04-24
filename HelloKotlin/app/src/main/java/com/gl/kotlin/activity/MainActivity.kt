@@ -22,11 +22,13 @@ class MainActivity : AppCompatActivity() {
     }
     private val items = arrayOf(
             "FlowActivity",
-            "EncryptActivity"
+            "EncryptActivity",
+            "CoroutineActivity"
     )
     private val activities = arrayOf<Class<*>>(
             FlowActivity::class.java,
-            HotCityActivity::class.java
+            HotCityActivity::class.java,
+            CoroutineActivity::class.java
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

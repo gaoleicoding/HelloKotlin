@@ -8,11 +8,11 @@ import kotlinx.coroutines.*
 
 object CoroutineUtil {
 
-    val TAG: String = "CoroutineManager"
+    val TAG: String = "CoroutineUtil"
 
     private suspend fun ioCode1() {
         withContext(Dispatchers.IO) {
-            Thread.sleep(1000)
+            delay(1000)
             Log.d(TAG, "onCreate:ioCode1=${Thread.currentThread().name} ")
         }
     }
@@ -30,7 +30,7 @@ object CoroutineUtil {
         }
     }
 
-    private fun lifecycleCoroutine(activity: AppCompatActivity) {
+    fun lifecycleCoroutine(activity: AppCompatActivity) {
         Log.d(TAG, "test: 方法开始")
         activity.lifecycleScope.launch {
             delay(1000)
@@ -46,41 +46,37 @@ object CoroutineUtil {
     fun startBlockingCoroutine() = runBlocking { // this: CoroutineScope
         launch {
             delay(200L)
-            println("Task from runBlocking")
+            Log.d(TAG, "Task from runBlocking")
         }
 
         coroutineScope { // Creates a coroutine scope
             launch {
                 delay(500L)
-                println("Task from nested launch")
+                Log.d(TAG, "Task from nested launch")
             }
 
             delay(100L)
-            println("Task from coroutine scope") // This line will be printed before the nested launch
+            Log.d(TAG, "Task from coroutine scope") // This line will be printed before the nested launch
         }
 
-        println("Coroutine scope is over") // This line is not printed until the nested launch completes
+        Log.d(TAG, "Coroutine scope is over") // This line is not printed until the nested launch completes
     }
 
+    //runBlocking作为普通方法和suspend方法互相调用的桥梁，实现程序在阻塞和非阻塞状态之间切换
 
     fun switchCoroutineThread() = runBlocking {
-        val deferred: Deferred<Int> = async(Dispatchers.Default) {
-            loadData()
+        val deferred = async(Dispatchers.IO) {
+            //此处是一个耗时任务
+            delay(2000L)
+            "ok"
         }
-        Log.d(TAG, "waiting...")
-        Log.d(TAG, "deferred: " + deferred.await())
-        Log.d(TAG, "finish...")
+        //此处继续执行其他任务
+        //..........
+        val result = deferred.await()  //此处获取耗时任务的结果，我们挂起当前协程，并等待结果
+        Log.d(TAG, "threadName: "+Thread.currentThread().name)
+        Log.d(TAG, "result: "+result)
+
     }
 
-    suspend fun loadData(): Int {
-        Log.d(TAG, "loading...")
-        withContext(Dispatchers.Main) {//<---回到主线程
-            //update ui here
-            Log.d(TAG, "updating main...")
-        }
-        delay(1000L)
-        Log.d(TAG, "loaded!")
-        return 42
-    }
 
 }
