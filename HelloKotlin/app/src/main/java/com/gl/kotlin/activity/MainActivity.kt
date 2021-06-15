@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.knowledge.adapter.ItemAdapter
 import com.gl.kotlin.R
 import com.gl.kotlin.databinding.ActivityMainBinding
-import com.gl.kotlin.retrofit.RetrofitUtil
 import com.gl.kotlin.util.HigherFunctionUtil
 import com.gl.kotlin.util.KotlinUtil
 
@@ -21,22 +20,25 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
     private val items = arrayOf(
-            "FlowActivity",
-            "EncryptActivity",
-            "CoroutineActivity"
+        "HotCityActivity",
+        "CoroutineActivity",
+        "RetrofitActivity",
+        "FlowActivity",
+        "ChannelActivity"
+
     )
     private val activities = arrayOf<Class<*>>(
-            FlowActivity::class.java,
-            HotCityActivity::class.java,
-            CoroutineActivity::class.java
+        HotCityActivity::class.java,
+        CoroutineActivity::class.java,
+        RetrofitActivity::class.java,
+        FlowActivity::class.java,
+        ChannelActivity::class.java
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i("info", "MainActivity--onCreate()")
         setContentView(mBinding.root)
-
-        mBinding.textView.setText("Hello Kotlin")
 
         // 内联扩展函数之let
         // let扩展函数的实际上是一个作用域函数，当你需要去定义一个变量在一个特定的作用域范围内，
@@ -56,9 +58,10 @@ class MainActivity : AppCompatActivity() {
         val itemAdapter = ItemAdapter(this, items)
         mBinding.recyclerview.adapter = itemAdapter
         mBinding.recyclerview.addItemDecoration(
-                DividerItemDecoration(this@MainActivity,
-                        DividerItemDecoration.VERTICAL
-                )
+            DividerItemDecoration(
+                this@MainActivity,
+                DividerItemDecoration.VERTICAL
+            )
         )
         itemAdapter.setOnItemClickLitener(object : ItemAdapter.OnItemClickLitener {
             override fun onItemClick(v: View) {
@@ -105,4 +108,5 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MainActivity"
 
     }
+
 }

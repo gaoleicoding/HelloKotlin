@@ -1,6 +1,6 @@
 package com.gl.kotlin.util
 
-import com.gl.kotlin.entity.User
+import com.gl.kotlin.model.User
 
 object HigherFunctionUtil {
 

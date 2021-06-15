@@ -7,53 +7,67 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 
-
 class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
         connectivityManager = applicationContext
-                .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         context = this
-
+        instance = this
 
     }
 
     init {
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                Log.e("Lifecycle", activity.localClassName + " was Created" + "activity==null   "
-                        + (activity == null) + "     activity.isFinishing()  " + activity.isFinishing + "    activity.isDestroyed()  " + activity.isDestroyed)
+                Log.e(
+                    "Lifecycle", activity.localClassName + " was Created" + "activity==null   "
+                            + "     activity.isFinishing()  " + activity.isFinishing + "    activity.isDestroyed()  " + activity.isDestroyed
+                )
             }
 
             override fun onActivityStarted(activity: Activity) {
-                Log.e("Lifecycle", activity.localClassName + " was Started" + "activity==null   "
-                        + (activity == null) + "     activity.isFinishing()   " + activity.isFinishing + "   activity.isDestroyed()  " + activity.isDestroyed)
+                Log.e(
+                    "Lifecycle", activity.localClassName + " was Started" + "activity==null   "
+                            + "     activity.isFinishing()   " + activity.isFinishing + "   activity.isDestroyed()  " + activity.isDestroyed
+                )
             }
 
             override fun onActivityResumed(activity: Activity) {
-                Log.e("Lifecycle", activity.localClassName + " was oResumed" + "activity==null   "
-                        + (activity == null) + "activity.isFinishing()   " + activity.isFinishing + "activity.isDestroyed() " + activity.isDestroyed)
+                Log.e(
+                    "Lifecycle", activity.localClassName + " was oResumed" + "activity==null   "
+                            + "activity.isFinishing()   " + activity.isFinishing + "activity.isDestroyed() " + activity.isDestroyed
+                )
             }
 
             override fun onActivityPaused(activity: Activity) {
-                Log.e("Lifecycle", activity.localClassName + " was Pauseed" + "activity==null   "
-                        + (activity == null) + "activity.isFinishing()   " + activity.isFinishing + "activity.isDestroyed()  " + activity.isDestroyed)
+                Log.e(
+                    "Lifecycle", activity.localClassName + " was Pauseed" + "activity==null   "
+                            + "activity.isFinishing()   " + activity.isFinishing + "activity.isDestroyed()  " + activity.isDestroyed
+                )
             }
 
             override fun onActivityStopped(activity: Activity) {
-                Log.e("Lifecycle", activity.localClassName + " was Stoped" + "activity==null    "
-                        + (activity == null) + "activity.isFinishing()   " + activity.isFinishing + "activity.isDestroyed() " + activity.isDestroyed)
+                Log.e(
+                    "Lifecycle", activity.localClassName + " was Stoped" + "activity==null    "
+                            + "activity.isFinishing()   " + activity.isFinishing + "activity.isDestroyed() " + activity.isDestroyed
+                )
             }
 
             override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
-                Log.e("Lifecycle", activity.localClassName + " was SaveInstanceState" + "activity==null "
-                        + (activity == null) + "activity.isFinishing()   " + activity.isFinishing + "activity.isDestroyed()  " + activity.isDestroyed)
+                Log.e(
+                    "Lifecycle",
+                    activity.localClassName + " was SaveInstanceState" + "activity==null "
+                            + "activity.isFinishing()   " + activity.isFinishing + "activity.isDestroyed()  " + activity.isDestroyed
+                )
             }
 
             override fun onActivityDestroyed(activity: Activity) {
-                Log.e("Lifecycle", activity.localClassName + " was Destroyed" + "activity==null"
-                        + (activity == null) + "  activity.isFinishing()  " + activity.isFinishing + "  activity.isDestroyed()" + activity.isDestroyed)
+                Log.e(
+                    "Lifecycle", activity.localClassName + " was Destroyed" + "activity==null"
+                            + "  activity.isFinishing()  " + activity.isFinishing + "  activity.isDestroyed()" + activity.isDestroyed
+                )
             }
         })
     }
@@ -63,6 +77,7 @@ class App : Application() {
     companion object {
         lateinit var connectivityManager: ConnectivityManager
         lateinit var context: Context
+        lateinit var instance: Application
 
     }
 

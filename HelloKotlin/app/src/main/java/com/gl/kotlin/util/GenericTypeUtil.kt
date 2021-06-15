@@ -2,9 +2,6 @@ package com.gl.kotlin.util
 
 import android.provider.Contacts.People
 
-
-
-
 object GenericTypeUtil {
 
 

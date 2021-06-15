@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.gl.kotlin.R
-import com.gl.kotlin.entity.CityEntity
+import com.gl.kotlin.model.CityEntity
 import com.gl.kotlin.util.KotlinUtil.isBold
 
 

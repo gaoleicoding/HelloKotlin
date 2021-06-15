@@ -3,9 +3,7 @@ package com.gl.kotlin.activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.gl.kotlin.R
 import com.gl.kotlin.databinding.ActivityCoroutineBinding
-import com.gl.kotlin.databinding.ActivityMainBinding
 import com.gl.kotlin.util.CoroutineUtil
 
 

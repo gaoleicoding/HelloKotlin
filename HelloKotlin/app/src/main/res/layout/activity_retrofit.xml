@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
+        <variable
+            name="repo"
+            type="com.gl.kotlin.model.Repo" />
     </data>
 
     <LinearLayout
@@ -14,18 +15,19 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/retrofit_tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="20dp"
-            android:text="Hello Kotlin" />
+            android:text="@{repo.name}" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
+        <EditText
+            android:id="@+id/et_search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
     </LinearLayout>
 </layout>

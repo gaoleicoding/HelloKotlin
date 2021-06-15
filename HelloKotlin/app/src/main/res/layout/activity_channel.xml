@@ -19,13 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="20dp"
-            android:text="Hello Kotlin" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+            android:text="Hello Channel!" />
 
     </LinearLayout>
 </layout>

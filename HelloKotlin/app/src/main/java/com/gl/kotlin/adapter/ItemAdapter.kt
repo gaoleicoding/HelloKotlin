@@ -19,7 +19,7 @@ class ItemAdapter(private val ctx: Context, private val items: Array<String>) :
     private var mOnItemClickLitener: OnItemClickLitener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_items, null)
+        val view: View = LayoutInflater.from(ctx).inflate(R.layout.main_rv_items, null)
         val holder = MyViewHolder(view)
         return holder
     }

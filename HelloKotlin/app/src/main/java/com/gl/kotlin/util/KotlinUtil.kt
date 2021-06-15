@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.gl.kotlin.entity.User
+import com.gl.kotlin.model.User
+import java.util.*
 
 object KotlinUtil {
 
@@ -218,4 +219,13 @@ object KotlinUtil {
             fun bar()
         }
     }
+
+    fun timerDemo(){
+        Timer().schedule(object: TimerTask(){
+            override fun run() {
+                println("Hello World!")
+            }
+        }, Date(), 1000)
+    }
+
 }

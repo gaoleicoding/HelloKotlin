@@ -3,7 +3,7 @@ package com.gl.kotlin.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
-import com.gl.kotlin.entity.CityEntity
+import com.gl.kotlin.model.CityEntity
 import com.gl.kotlin.adapter.HotCityAdapter
 import com.gl.kotlin.util.Utils
 import com.gl.kotlin.util.Utils.toast
