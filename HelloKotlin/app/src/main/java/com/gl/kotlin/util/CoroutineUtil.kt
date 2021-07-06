@@ -78,5 +78,22 @@ object CoroutineUtil {
 
     }
 
+    fun setUpUI(){
+        val data = requestData()
+        doSomethingElse()
+        processData(data)
+    }
 
+    fun requestData(): String {
+        Thread.sleep(2000)
+        return "Ui Data"
+    }
+
+    fun doSomethingElse(){
+        println("doSomethingElse")
+    }
+
+    fun processData(data: String) {
+        println("updateUI$data")
+    }
 }
