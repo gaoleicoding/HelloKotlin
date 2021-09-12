@@ -4,7 +4,7 @@ import com.gl.kotlin.model.Repo
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface GithubApi {
+interface ApiGithub {
     @GET("users/{user}/repos")
     suspend fun listReposKt(@Path("user") user: String): List<Repo>
 }

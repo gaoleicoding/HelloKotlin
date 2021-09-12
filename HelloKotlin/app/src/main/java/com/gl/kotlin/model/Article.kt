@@ -1,45 +1,5 @@
 package com.gl.kotlin.model
 
-/**
- * WanAndroid Root
- * author: yidong
- * 2021/1/2
- */
-data class BasicResponse<T>(
-    val data: T,
-    val errorCode: Int,
-    val errorMsg: String
-)
-
-data class Banner(
-    val desc: String,
-    val id: Int,
-    val imagePath: String,
-    val isVisible: Int,
-    val order: Int,
-    val title: String,
-    val type: Int,
-    val url: String
-)
-
-data class HotKey(
-    val id: Int,
-    val link: String,
-    val name: String,
-    val order: Int,
-    val visible: Int
-)
-
-data class PageInfo<T>(
-    val curPage: Int,
-    val datas: List<T>,
-    val offset: Int,
-    val over: Boolean,
-    val pageCount: Int,
-    val size: Int,
-    val total: Int
-)
-
 data class Article(
     val apkLink: String,
     val audit: Int,

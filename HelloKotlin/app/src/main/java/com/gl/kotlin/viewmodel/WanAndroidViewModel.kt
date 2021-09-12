@@ -2,18 +2,17 @@ package com.gl.kotlin.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gl.kotlin.base.BaseViewModel
 import com.gl.kotlin.model.Article
 import com.gl.kotlin.model.Banner
 import com.gl.kotlin.model.HotKey
-import com.gl.kotlin.retrofit.RetrofitUtil
+import com.gl.kotlin.retrofit.RetrofitManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import tech.kicky.common.WanAndroidApi
+import com.gl.kotlin.retrofit.ApiWanAndroid
 
 class WanAndroidViewModel : BaseViewModel() {
     val TAG: String = javaClass.simpleName
@@ -23,8 +22,7 @@ class WanAndroidViewModel : BaseViewModel() {
     val homeArticles = MutableLiveData<List<Article>?>()
     val toastMsg = MutableLiveData<String>()
 
-    val retrofit = RetrofitUtil.instance
-    var provider = retrofit.get(retrofit.wanAndroidBaseUrl, WanAndroidApi::class.java)
+    var apiWanAndroid: ApiWanAndroid = RetrofitManager.create(ApiWanAndroid::class.java)
 
     fun getBanners() {
 //        viewModelScope.launch(Dispatchers.IO) {
@@ -33,7 +31,7 @@ class WanAndroidViewModel : BaseViewModel() {
 //        }
         launch(
             block = {
-                val result = provider.banners()
+                val result = apiWanAndroid.banners()
                 banners.postValue(result.data)
             }
         )
@@ -43,12 +41,10 @@ class WanAndroidViewModel : BaseViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             val start = System.currentTimeMillis()
             // 先请求Banners
-            val result = async { provider.banners() }
+            val result = async { apiWanAndroid.banners() }
             banners.postValue(result.await().data)
             // 再请求热键，只要是顺序执行即可且上一次的请求结果已拿到即可满足我们的使用场景。
-            val keys = retrofit.get(
-                retrofit.wanAndroidBaseUrl, WanAndroidApi::class.java
-            ).hotKeys()
+            val keys = apiWanAndroid.hotKeys()
             hotKeys.postValue(keys.data)
             Log.d(TAG, "getBannersAndKeys-time: " + (System.currentTimeMillis() - start).toString())
         }
@@ -58,10 +54,10 @@ class WanAndroidViewModel : BaseViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             val start = System.currentTimeMillis()
             val result = async {
-                provider.banners()
+                apiWanAndroid.banners()
             }
             val keys = async {
-                provider.hotKeys()
+                apiWanAndroid.hotKeys()
             }
             Log.d(TAG, (result.await().data.size + keys.await().data.size).toString())
             Log.d(TAG, ("getBannersAndKeysAsync-time: " + (System.currentTimeMillis() - start)))
@@ -70,7 +66,7 @@ class WanAndroidViewModel : BaseViewModel() {
 
     fun getHomeArticleList(page: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = async { provider.getHomeArticleList(page) }
+            val result = async { apiWanAndroid.getHomeArticleList(page) }
             homeArticles.postValue(result.await().data.datas)
         }
     }
@@ -79,7 +75,7 @@ class WanAndroidViewModel : BaseViewModel() {
         viewModelScope.launch {
             flow {
                 Log.d("Flow", "Emit on ${Thread.currentThread().name}")
-                val result = provider.searchArticles(0, key)
+                val result = apiWanAndroid.searchArticles(0, key)
                 emit(result.data.datas)
             }.flowOn(Dispatchers.IO)
                 .onStart {

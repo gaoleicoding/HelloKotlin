@@ -6,6 +6,7 @@ import com.gl.kotlin.R
 import com.gl.kotlin.base.BaseActivity
 import com.gl.kotlin.databinding.ActivityRetrofitBinding
 import com.gl.kotlin.viewmodel.WanAndroidViewModel
+import com.gl.kotlin.util.Utils
 
 internal class RetrofitActivity : BaseActivity<WanAndroidViewModel, ActivityRetrofitBinding>() {
 
@@ -25,6 +26,7 @@ internal class RetrofitActivity : BaseActivity<WanAndroidViewModel, ActivityRetr
         mViewModel.banners.observe(this, {
             val banners = it
             Log.d(TAG, "banners.size: ${banners?.size}")
+            Utils.showToast("banners.size: ${banners?.size}")
         })
         mViewModel.getBanners()
     }
@@ -33,6 +35,7 @@ internal class RetrofitActivity : BaseActivity<WanAndroidViewModel, ActivityRetr
         mViewModel.homeArticles.observe(this, {
             val articleList = it
             Log.d(TAG, "articleList.size: ${articleList?.size}")
+            Utils.showToast("articleList.size: ${articleList?.size}")
         })
         mViewModel.getArticles("kotlin")
     }

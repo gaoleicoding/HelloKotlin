@@ -28,6 +28,7 @@
             android:layout_height="50dp"
             android:layout_margin="20dp"
             android:textColor="@color/black"
+            android:visibility="gone"
             android:textSize="14sp" />
     </LinearLayout>
 </layout>

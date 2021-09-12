@@ -21,19 +21,21 @@ class MainActivity : AppCompatActivity() {
     }
     private val items = arrayOf(
         "HotCityActivity",
+        "FlowActivity",
+        "ChannelActivity",
         "CoroutineActivity",
         "RetrofitActivity",
-        "FlowActivity",
-        "ChannelActivity"
 
-    )
+
+        )
     private val activities = arrayOf<Class<*>>(
         HotCityActivity::class.java,
+        FlowActivity::class.java,
+        ChannelActivity::class.java,
         CoroutineActivity::class.java,
         RetrofitActivity::class.java,
-        FlowActivity::class.java,
-        ChannelActivity::class.java
-    )
+
+        )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
