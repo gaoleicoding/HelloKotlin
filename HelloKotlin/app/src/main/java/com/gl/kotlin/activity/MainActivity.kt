@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.knowledge.adapter.ItemAdapter
@@ -12,6 +13,7 @@ import com.gl.kotlin.R
 import com.gl.kotlin.databinding.ActivityMainBinding
 import com.gl.kotlin.util.HigherFunctionUtil
 import com.gl.kotlin.util.KotlinUtil
+import java.util.EnumSet.of
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,9 +27,7 @@ class MainActivity : AppCompatActivity() {
         "ChannelActivity",
         "CoroutineActivity",
         "RetrofitActivity",
-
-
-        )
+    )
     private val activities = arrayOf<Class<*>>(
         HotCityActivity::class.java,
         FlowActivity::class.java,

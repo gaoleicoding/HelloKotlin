@@ -17,7 +17,14 @@ class HotCityActivity : AppCompatActivity() {
     lateinit var hotCityList: List<CityEntity>
 
     private val cities: Array<CityEntity> by lazy {
-        arrayOf(CityEntity("北京", "10", "20"), CityEntity("上海", "10", "20"), CityEntity("广州", "10", "20"), CityEntity("深圳", "10", "20"), CityEntity("杭州", "10", "20"), CityEntity("郑州", "10", "20"))
+        arrayOf(
+            CityEntity("北京", "20", "20"),
+            CityEntity("上海", "30", "20"),
+            CityEntity("广州", "40", "20"),
+            CityEntity("深圳", "50", "20"),
+            CityEntity("杭州", "60", "20"),
+            CityEntity("郑州", "70", "20")
+        )
     }
 
     private val mBinding: ActivityRecyclerBinding by lazy {

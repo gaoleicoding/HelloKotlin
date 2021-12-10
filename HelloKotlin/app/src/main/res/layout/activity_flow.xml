@@ -9,15 +9,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp"
-            android:text="Hello Flow!" />
+            android:text="Hello Flow!"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="请输入"
+            android:padding="10dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="debouceDemo"
+            android:text="debouceDemo"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:onClick="simpleStateFlow"
+            android:text="simpleStateFlow"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:onClick="simpleSharedFlow"
+            android:text="simpleSharedFlow"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 </layout>
