@@ -1,20 +1,14 @@
 package com.gl.kotlin.activity
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.gl.kotlin.databinding.ActivityFlowBinding
-import com.gl.kotlin.viewmodel.WanAndroidViewModel
+import com.gl.kotlin.util.FlowUtil
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
 
 class FlowActivity : AppCompatActivity() {
@@ -27,42 +21,16 @@ class FlowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
-        flowDemo()
+        flowUtil()
         etDebounce()
     }
 
-    fun flowDemo() {
-        GlobalScope.launch(Dispatchers.Main) {
-            count().flowOn(Dispatchers.Unconfined) // 指定数据流产生运行线程
-                .map {
-//                    Log.d("Coroutine", "map on ${Thread.currentThread().name}")
-                    if (it > 10) {
-                        throw NumberFormatException()
-                    }
-                    "I am $it"
-                }.flowOn(Dispatchers.IO)           // 指定map中间action运行线程
-                .catch { ex ->
-//                    Log.d("Coroutine", "catch on ${Thread.currentThread().name}")
-                    emit("error")
-                }.collect {
-//                    Log.d("Coroutine", "collect on ${Thread.currentThread().name}")
-                    mBinding.textView.text = it
-                }
-        }
+    fun flowUtil() {
+        FlowUtil.flowTranversal()
+        FlowUtil.flowTransform()
+        FlowUtil.flowSeuquence()
     }
 
-    private fun count(): Flow<Int> = flow {
-        var x = 0
-        while (true) {
-            if (x > 20) {
-                break
-            }
-            delay(500)
-//            Log.d("Coroutine", "emit on ${Thread.currentThread().name}")
-            emit(x)
-            x = x.plus(1)
-        }
-    }
 
     fun etDebounce() {
         // 定义一个全局的 StateFlow

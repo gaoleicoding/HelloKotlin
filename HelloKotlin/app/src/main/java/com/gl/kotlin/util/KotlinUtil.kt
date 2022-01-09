@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.gl.kotlin.model.User
+import java.io.File
 import java.util.*
 
 object KotlinUtil {
@@ -226,6 +227,11 @@ object KotlinUtil {
                 println("Hello World!")
             }
         }, Date(), 1000)
+    }
+
+    fun fileDemo(){
+        File("/home/test.txt").readLines()
+            .forEach { println(it) }
     }
 
 }
